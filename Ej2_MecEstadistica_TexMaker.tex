@@ -1,0 +1,96 @@
+\documentclass[a4paper,10pt]{article}
+
+%%%%%%%%%%%% PREÁMBULO %%%%%%%%%%%%%%%%%%%%%
+
+% Paquetes
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+
+\usepackage{listings}
+
+% Opciones
+
+\title{Mecánica Estadística\\Ensamble Canónico}
+
+\author{Ivan Duran}
+
+\date{Abril 26 de 2021}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+{\textbf{\textcolor{red}{Nota:}} Lo escrito en este documento es parte de una tarea de mi curso de Mecánica Estadística, el cual estoy cursando actualmente, sin embargo, la tarea ya fue entregada hace días por lo que el ejercicio de pasarla a formato LaTex es totalmente desde 0.
+\section{Ejercicio 2}
+A set of N classical oscillators in one dimension is given by the Hamiltonian
+\begin{equation}
+	\notag \mathcal{H}=\sum_{i=1}^N\left(\frac{p_i^2}{2m}+\frac{m\omega^2q_i^2}{2}\right)
+\end{equation}
+Using the formalism of the canonical ensemble in classical phase
+space, obtain the expressions for the partition function and entrophy.
+
+\begin{itemize}
+	\item \textit{Para la función de partición}:\\
+En el espacio fase sabemos que: 
+\begin{equation}
+	\notag Z=\int_N exp(-\beta \mathcal{H}(p,q))dq^Ndp^N
+\end{equation}
+Esta integral podemos reescribirla como:
+\begin{equation}
+\notag	Z=\left[\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}exp(-\frac{-\beta p^2}{2m}-\frac{-\beta m\omega q^2}{2})dqdp\right]^N
+\end{equation}
+Antes de continuar, recordemos la integral Gaussiana:
+\begin{equation}
+	\notag \int_{-\infty}^{\infty}e^{-\frac{x^2}{c^2}}= |c|\sqrt{\pi}
+\end{equation}
+Resolviendo, de momento, las integrales:
+\begin{equation}
+	\notag \int_{-\infty}^{\infty}e^{-\frac{\beta}{2m}p^2}=\sqrt{\frac{2m}{\beta}}\sqrt{\pi}
+\end{equation}
+\begin{equation}
+	\notag \int_{-\infty}^{\infty}e^{-\frac{\beta\omega}{2}q^2}=\sqrt{\frac{2}{\omega\beta m}}\sqrt{\pi}
+\end{equation}
+Por lo tanto:
+\begin{equation}
+	\notag Z=\left(\sqrt{\frac{2m}{\beta}}\sqrt{\pi}\right)\left(\sqrt{\frac{2}{\omega\beta m}}\sqrt{\pi}\right)=\left(\frac{2\pi}{\omega\beta}\right)^N
+\end{equation}	
+Si $\beta=\frac{1}{\kappa_B T}$, entonces: 
+\begin{equation}
+	\notag \boxed{Z=\left(\frac{2\pi\kappa_B T}{\omega}\right)^N}
+\end{equation}
+\item \textit{Para la entropía}:\\
+Sabemos que 
+\begin{equation}
+\notag f=-\kappa_B T\lim_{N \to \infty}\frac{1}{N}ln|Z|
+\end{equation}
+Entonces: 
+\begin{equation}
+\notag f= -\kappa_B T \lim \lim_{N \to \infty}\frac{1}{N}ln\left|\left(\frac{2\pi\kappa_B T}{\omega}\right)^N\right|
+\end{equation}
+Por lo tanto:
+\begin{equation}
+\notag f=-\kappa_B T ln\left|\frac{2\pi\kappa_B T}{\omega}\right|
+\end{equation}
+También, sabemos que: 
+\begin{equation}
+\notag s(T)=-\left(\frac{\partial f}{\partial T}\right)_H
+\end{equation}
+Entonces: 
+\begin{equation}
+\notag s(T)=-\kappa_B\frac{\partial }{\partial T}\left(T ln\left|\frac{2\pi\kappa_B T}{\omega}\right|\right)
+\end{equation}
+Al realizar la derivada llegaremos a que: 
+\begin{equation}
+\notag \boxed{s(T)=\kappa_B\left[ln\left|\frac{2\pi\kappa_B T}{\omega}\right|+1\right]}
+\end{equation}
+\end{itemize}
+
+
+\end{document}
